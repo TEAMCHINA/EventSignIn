@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSignIn", "EventSignIn\EventSignIn.csproj", "{C12B3057-5C2C-4D64-8FE4-9DBC4673ECE3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSignIn.Tests", "EventSignIn.Tests\EventSignIn.Tests.csproj", "{C4B76977-DF4F-4156-942C-5CD8A6FD7BB8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C12B3057-5C2C-4D64-8FE4-9DBC4673ECE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C12B3057-5C2C-4D64-8FE4-9DBC4673ECE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C12B3057-5C2C-4D64-8FE4-9DBC4673ECE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C12B3057-5C2C-4D64-8FE4-9DBC4673ECE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4B76977-DF4F-4156-942C-5CD8A6FD7BB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4B76977-DF4F-4156-942C-5CD8A6FD7BB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4B76977-DF4F-4156-942C-5CD8A6FD7BB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4B76977-DF4F-4156-942C-5CD8A6FD7BB8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

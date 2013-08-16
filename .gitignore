@@ -1,0 +1,10 @@
+/EventSignIn/obj
+/EventSignIn/bin
+
+/EventSignIn.tests/obj
+/EventSignIn.Tests/bin
+
+/*.suo
+/*.user
+
+/_Resharper_EventSignIn
