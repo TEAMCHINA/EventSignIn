@@ -1,8 +1,47 @@
 ﻿@model EventSignIn.Models.SummaryModel
 
 @{
-    ViewBag.Title = "title";
+    ViewBag.Title = "Dashboard";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>title</h2>
+<style type="text/css">
+    div {
+        border: 1px solid #000;
+        padding: 3px;
+        margin-bottom: 5px;
+    }
+
+    div > div {
+        cursor: pointer;
+    }
+
+    div > div:hover {
+        background: #EEEEEE;
+    }
+</style>
+
+<div style="float: left">
+    <h2>Events</h2>
+    @foreach (var e in Model.Events)
+    {
+        <div>
+            <h3>@e.Name</h3>
+            <p>@e.Date.ToShortDateString()</p>
+            <p>@e.Location</p>
+        </div>
+    }
+</div>
+
+<div style="float: right">
+    <h2>Users</h2>
+    @foreach (var user in Model.Users)
+    {
+        <div>
+            <h3>@user.FirstName @user.LastName</h3>
+            <p>@user.EmailAddress</p>
+            <p>@user.PhoneNumber</p>
+            <p>Class of @user.GraduationYear</p>
+        </div>
+    }
+</div>

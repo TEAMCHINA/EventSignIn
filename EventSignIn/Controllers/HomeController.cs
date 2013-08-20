@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using EventSignIn.Models;
 
 namespace EventSignIn.Controllers
 {
@@ -13,7 +14,40 @@ namespace EventSignIn.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            var model = new SummaryModel
+                {
+                    Users = new List<UserModel>
+                        {
+                            new UserModel
+                                {
+                                    FirstName = "Lisa",
+                                    LastName = "Ly",
+                                    EmailAddress = "ladyautodidact@gmail.com",
+                                    EmailOptIn = true,
+                                    GraduationYear = 2003,
+                                },
+                            new UserModel
+                                {
+                                    FirstName = "Cliff",
+                                    LastName = "Chinn",
+                                    EmailAddress = "monkeyhateclean@gmail.com",
+                                    EmailOptIn = true,
+                                    GraduationYear = 2002,
+                                    Notes = "Graduated from UW!",
+                                },
+                        },
+                        Events = new List<EventModel>
+                            {
+                                new EventModel
+                                    {
+                                        Date = new DateTime(2013, 8, 16),
+                                        Location = "Paradise Perks",
+                                        Name = "Board Game Night",
+                                        Description = "A night of board games!",
+                                    }
+                            }
+                };
+            return View(model);
         }
 
         //
