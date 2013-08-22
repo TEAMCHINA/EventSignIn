@@ -175,7 +175,7 @@
     </Content>
     <Content Include="Content\images\glyphicons-halflings-white.png" />
     <Content Include="Content\images\glyphicons-halflings.png" />
-    <Content Include="Content\Site.css" />
+    <None Include="Content\Site.less" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -290,8 +290,16 @@
     <Content Include="Content\less\variables.less" />
     <Content Include="Content\less\wells.less" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <TypeScriptCompile Include="Scripts\Behaviors\AjaxLoad.ts" />
+    <Content Include="Scripts\Behaviors\AjaxLoad.js">
+      <DependentUpon>AjaxLoad.ts</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Behaviors\AjaxLoad.min.js">
+      <DependentUpon>AjaxLoad.ts</DependentUpon>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\Definitions\jquery.d.ts" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
@@ -308,6 +316,13 @@
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\less.min.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
+    <TypeScriptCompile Include="Scripts\behaviors.ts" />
+    <Content Include="Scripts\behaviors.js">
+      <DependentUpon>behaviors.ts</DependentUpon>
+    </Content>
+    <Content Include="Scripts\behaviors.min.js">
+      <DependentUpon>behaviors.ts</DependentUpon>
+    </Content>
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

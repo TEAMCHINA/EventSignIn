@@ -5,14 +5,20 @@
 }
 
 <h2>Categories</h2>
+
 @foreach (var category in Model)
 {
-    <div>
-        <span style="font-weight: bold">@category.Name</span>
-        <br/>
-        <span>@category.Description</span>
-        <br/>
-        <a href="@Url.Action("Edit", "Category", new { id = category.Id})">Edit</a>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            @category.Name
+            <a href="@Url.Action("Edit", "Category", new { id = category.Id})"><i class="icon icon-edit"></i></a>
+        </div>
+        <div class="panel-body">@category.Description</div>
+
     </div>
 }
-<a href="@Url.Action("Create", "Category")">Create New</a>
+
+<a class="btn" href="@Url.Action("Create", "Category")">
+    <i class="icon icon-plus"></i>
+    Create New
+</a>
