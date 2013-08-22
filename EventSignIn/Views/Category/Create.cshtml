@@ -1,0 +1,12 @@
+﻿@model EventSignIn.Models.CategoryModel
+
+@using (Html.BeginForm("Create", "Category"))
+{
+<fieldset>
+    <legend>Category</legend>
+    <div>@Html.TextBoxFor(model => model.Name)</div>
+    <div>@Html.TextBoxFor(model => model.Description)</div>
+    
+    <input type="submit" value="Create Category"/>
+</fieldset>
+}

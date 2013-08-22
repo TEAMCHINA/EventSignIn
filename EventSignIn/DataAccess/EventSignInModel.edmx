@@ -1,0 +1,278 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="EventSignInModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="EventSignInModelStoreContainer">
+          <EntitySet Name="Category" EntityType="EventSignInModel.Store.Category" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="EventAttendance" EntityType="EventSignInModel.Store.EventAttendance" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Events" EntityType="EventSignInModel.Store.Events" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Users" EntityType="EventSignInModel.Store.Users" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_EventAttendance_Event" Association="EventSignInModel.Store.FK_EventAttendance_Event">
+            <End Role="Events" EntitySet="Events" />
+            <End Role="EventAttendance" EntitySet="EventAttendance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EventAttendance_User" Association="EventSignInModel.Store.FK_EventAttendance_User">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="EventAttendance" EntitySet="EventAttendance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Events_Category" Association="EventSignInModel.Store.FK_Events_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Events" EntitySet="Events" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Description" Type="text" />
+        </EntityType>
+        <EntityType Name="EventAttendance">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="EventId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Events">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Description" Type="text" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Location" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Category" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="EmailAddress" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="PhoneNumber" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="GraduationYear" Type="int" />
+          <Property Name="EmailOptIn" Type="bit" Nullable="false" />
+          <Property Name="Notes" Type="text" />
+        </EntityType>
+        <Association Name="FK_EventAttendance_Event">
+          <End Role="Events" Type="EventSignInModel.Store.Events" Multiplicity="1" />
+          <End Role="EventAttendance" Type="EventSignInModel.Store.EventAttendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Events">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EventAttendance">
+              <PropertyRef Name="EventId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EventAttendance_User">
+          <End Role="Users" Type="EventSignInModel.Store.Users" Multiplicity="1" />
+          <End Role="EventAttendance" Type="EventSignInModel.Store.EventAttendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EventAttendance">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Events_Category">
+          <End Role="Category" Type="EventSignInModel.Store.Category" Multiplicity="1" />
+          <End Role="Events" Type="EventSignInModel.Store.Events" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Events">
+              <PropertyRef Name="Category" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EventSignInModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="EventSignInEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Categories" EntityType="EventSignInModel.Category" />
+          <EntitySet Name="EventAttendances" EntityType="EventSignInModel.EventAttendance" />
+          <EntitySet Name="Events" EntityType="EventSignInModel.Event" />
+          <EntitySet Name="Users" EntityType="EventSignInModel.User" />
+          <AssociationSet Name="FK_Events_Category" Association="EventSignInModel.FK_Events_Category">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Events" EntitySet="Events" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EventAttendance_Event" Association="EventSignInModel.FK_EventAttendance_Event">
+            <End Role="Events" EntitySet="Events" />
+            <End Role="EventAttendance" EntitySet="EventAttendances" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EventAttendance_User" Association="EventSignInModel.FK_EventAttendance_User">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="EventAttendance" EntitySet="EventAttendances" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Events" Relationship="EventSignInModel.FK_Events_Category" FromRole="Category" ToRole="Events" />
+        </EntityType>
+        <EntityType Name="EventAttendance">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="EventId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Event" Relationship="EventSignInModel.FK_EventAttendance_Event" FromRole="EventAttendance" ToRole="Events" />
+          <NavigationProperty Name="User" Relationship="EventSignInModel.FK_EventAttendance_User" FromRole="EventAttendance" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Event">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Location" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Category" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Category1" Relationship="EventSignInModel.FK_Events_Category" FromRole="Events" ToRole="Category" />
+          <NavigationProperty Name="EventAttendances" Relationship="EventSignInModel.FK_EventAttendance_Event" FromRole="Events" ToRole="EventAttendance" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="EmailAddress" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="GraduationYear" Type="Int32" />
+          <Property Name="EmailOptIn" Type="Boolean" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="EventAttendances" Relationship="EventSignInModel.FK_EventAttendance_User" FromRole="Users" ToRole="EventAttendance" />
+        </EntityType>
+        <Association Name="FK_Events_Category">
+          <End Role="Category" Type="EventSignInModel.Category" Multiplicity="1" />
+          <End Role="Events" Type="EventSignInModel.Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Events">
+              <PropertyRef Name="Category" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EventAttendance_Event">
+          <End Role="Events" Type="EventSignInModel.Event" Multiplicity="1" />
+          <End Role="EventAttendance" Type="EventSignInModel.EventAttendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Events">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EventAttendance">
+              <PropertyRef Name="EventId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EventAttendance_User">
+          <End Role="Users" Type="EventSignInModel.User" Multiplicity="1" />
+          <End Role="EventAttendance" Type="EventSignInModel.EventAttendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EventAttendance">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EventSignInModelStoreContainer" CdmEntityContainer="EventSignInEntities">
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="EventSignInModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EventAttendances">
+            <EntityTypeMapping TypeName="EventSignInModel.EventAttendance">
+              <MappingFragment StoreEntitySet="EventAttendance">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="EventId" ColumnName="EventId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Events">
+            <EntityTypeMapping TypeName="EventSignInModel.Event">
+              <MappingFragment StoreEntitySet="Events">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="EventSignInModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="GraduationYear" ColumnName="GraduationYear" />
+                <ScalarProperty Name="EmailOptIn" ColumnName="EmailOptIn" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

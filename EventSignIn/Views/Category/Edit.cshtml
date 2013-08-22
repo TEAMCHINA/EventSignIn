@@ -1,0 +1,16 @@
+﻿@model EventSignIn.Models.CategoryModel
+
+@using (Html.BeginForm("Edit", "Category"))
+{
+<fieldset>
+    <legend>Category</legend>
+    <div>
+        <input id="Name" name="Name" type="text" value="@(Model != null ? Model.Name : string.Empty)"/>
+    </div>
+    <div>
+        <input id="Description" name="Description" type="text" value="@(Model != null ? Model.Description : string.Empty)"/>
+    </div>
+    
+    <input type="submit" value="Save"/>
+</fieldset>
+}
