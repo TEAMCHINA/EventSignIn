@@ -11,8 +11,11 @@
     @RenderBody()
 
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/site")
     <script src="/Scripts/plugins/bootstrap-datetimepicker.min.js"></script>
+    @Scripts.Render("~/bundles/site")
     @RenderSection("scripts", required: false)
+    <div id="page_modal" class="modal hide fade" tabindex="-1" role="dialog">
+        
+    </div>
 </body>
 </html>

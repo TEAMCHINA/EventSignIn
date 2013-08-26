@@ -17,17 +17,19 @@ namespace EventSignIn.DataAccess
                                                     .ToDictionary(c => c.Id, c => c);
 
                 var events = db.Events
-                               .Select(e => new EventModel
-                                   {
-                                       Id = e.Id,
-                                       Name = e.Name,
-                                       Description = e.Description,
-                                       Location = e.Location,
-                                       Date = e.Date,
-                                       Category = categories[e.Category],
-                                   });
+                    .ToList();
 
-                return events.ToList();
+                var eventModels = events.Select(e => new EventModel
+                    {
+                        Id = e.Id,
+                        Name = e.Name,
+                        Description = e.Description,
+                        Location = e.Location,
+                        Date = e.Date,
+                        Category = categories[e.Category],
+                    });
+
+                return eventModels.ToList();
             }
         }
 

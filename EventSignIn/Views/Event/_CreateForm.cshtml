@@ -1,0 +1,71 @@
+﻿@model EventSignIn.Models.EventModel
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">x</button>
+    <h3>New Event</h3>
+</div>
+
+@using (Html.BeginForm("Create", "Event"))
+{
+    <div class="modal-body">
+        <fieldset class="form">
+            <div class="input">
+                <div class="input-label">
+                    Name:
+                </div>
+                <div class="input-container">
+                    <input id="Name" name="Name" type="text" value="@(Model != null ? Model.Name : string.Empty)"/>
+                </div>
+            </div>
+            <div class="input">
+                <div class="input-label">
+                    Description:
+                </div>
+                <div class="input-container">
+                    <input id="Description" name="Description" type="text" value="@(Model != null ? Model.Description : string.Empty)"/>
+                </div>
+            </div>
+            <div class="input">
+                <div class="input-label">
+                    Category:
+                </div>
+                <div class="input-container">
+                    <select name="categoryId">
+                        @foreach (var category in ViewBag.Categories)
+                        {
+                            <option value="@category.Id">
+                                @category.Name
+                            </option>
+                        }
+                    </select>                </div>
+            </div>
+            <div class="input">
+                <div class="input-label">
+                    Location:
+                </div>
+                <div class="input-container">
+                    <input id="Location" name="Location" type="text" value="@(Model != null ? Model.Location : string.Empty)"/>
+                </div>
+            </div>
+            <div class="input">
+                <div class="input-label">
+                    Date:
+                </div>
+                <div class="input-container">
+                    <div data-behavior="datepicker" class="input-append">
+                        <input id="Date" name="Date" data-format="MM/dd/yyyy HH:mm PP" type="text"></input>
+                        <span class="add-on">
+                            <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+    
+    <div class="modal-footer">
+        <button type="button" class="btn" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary" value="Create Event">Save</button>
+    </div>
+}
+

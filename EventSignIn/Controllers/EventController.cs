@@ -4,44 +4,46 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using EventSignIn.DataAccess;
+using EventSignIn.Models;
 
 namespace EventSignIn.Controllers
 {
     public class EventController : Controller
     {
+        CategoryDataAccess _categoryDataAccess = new CategoryDataAccess();
         EventDataAccess _eventDataAccess = new EventDataAccess();
-        //
-        // GET: /Event/
-
-        public ActionResult Index(int id)
-        {
-            var e = _eventDataAccess.GetEventById(id);
-            return View(e);
-        }
 
         //
         // GET: /Event/Create
-
-        public ActionResult Create()
+        public PartialViewResult CreateForm()
         {
-            return View();
+            var categories = _categoryDataAccess.GetCategories();
+            ViewBag.Categories = categories;
+            return PartialView("_CreateForm");
         }
 
         //
         // POST: /Event/Create
 
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public JsonResult Create(EventModel newEvent, int categoryId)
         {
             try
             {
-                // TODO: Add insert logic here
+                newEvent.Category = _categoryDataAccess.GetCategoryById(categoryId);
+                _eventDataAccess.CreateEvent(newEvent);
 
-                return RedirectToAction("Index");
+                return new JsonResult
+                    {
+                        Data = true
+                    };
             }
             catch
             {
-                return View();
+                return new JsonResult
+                {
+                    Data = false
+                };
             }
         }
 

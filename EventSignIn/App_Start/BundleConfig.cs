@@ -10,19 +10,19 @@ namespace EventSignIn
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery")
                             .Include(
-                                "~/Scripts/jquery-{version}.js",
-                                "~/Scripts/jquery-ui-{version}.js"));
+                                "~/Scripts/jquery-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/site")
                             .Include(
                                 "~/Scripts/behaviors.js",
                                 "~/Scripts/bootstrap.js",
-                                "~/Scripts/behaviors/AjaxLoad.js"));
+                                "~/Scripts/behaviors/datepicker.js",
+                                "~/Scripts/behaviors/loadformmodal.js"));
 
             bundles.Add(new StyleBundle("~/Content/css")
                             .Include(
-                                "~/Content/site.less",
-                                "~/Content/less/bootstrap.less"));
+                                "~/Content/less/bootstrap.less",
+                                "~/Content/site.less"));
 
             //bundles.Add(new ScriptBundle("~/bundles/plugins")
             //                .Include(

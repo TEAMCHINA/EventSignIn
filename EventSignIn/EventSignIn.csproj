@@ -298,15 +298,22 @@
     <Content Include="Content\less\variables.less" />
     <Content Include="Content\less\wells.less" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Views\Event\_CreateForm.cshtml" />
+    <TypeScriptCompile Include="Scripts\Behaviors\datepicker.ts" />
+    <TypeScriptCompile Include="Scripts\Behaviors\loadformmodal.ts" />
+    <Content Include="Scripts\Behaviors\datepicker.js">
+      <DependentUpon>datepicker.ts</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Behaviors\datepicker.min.js">
+      <DependentUpon>datepicker.ts</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Behaviors\loadformmodal.js">
+      <DependentUpon>loadformmodal.ts</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Behaviors\loadformmodal.min.js">
+      <DependentUpon>loadformmodal.ts</DependentUpon>
+    </Content>
     <Content Include="Scripts\plugins\bootstrap-datetimepicker.min.js" />
-    <Content Include="Views\Event\Create.cshtml" />
-    <TypeScriptCompile Include="Scripts\Behaviors\AjaxLoad.ts" />
-    <Content Include="Scripts\Behaviors\AjaxLoad.js">
-      <DependentUpon>AjaxLoad.ts</DependentUpon>
-    </Content>
-    <Content Include="Scripts\Behaviors\AjaxLoad.min.js">
-      <DependentUpon>AjaxLoad.ts</DependentUpon>
-    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\Definitions\jquery.d.ts" />
@@ -345,7 +352,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Event\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Category\Index.cshtml" />
     <Content Include="Views\Category\Create.cshtml" />

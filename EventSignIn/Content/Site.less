@@ -1,4 +1,8 @@
-﻿.panel
+﻿form {
+    margin: 0;
+}
+
+.panel
 {
     border: 1px solid #000;
     border-radius: 5px;
@@ -17,5 +21,21 @@
     .panel-body
     {
         padding: 3px;
+    }
+}
+
+fieldset.form
+{
+    margin: 5px;
+    display: table;
+
+    div.input, legend
+    {
+        display: table-row;
+
+        div.input-label, div.input-container
+        {
+            display: table-cell;
+        }
     }
 }
