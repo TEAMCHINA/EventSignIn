@@ -16,7 +16,8 @@ namespace EventSignIn
             bundles.Add(new ScriptBundle("~/bundles/site")
                             .Include(
                                 "~/Scripts/behaviors.js",
-                                "~/Scripts/bootstrap.js"));
+                                "~/Scripts/bootstrap.js",
+                                "~/Scripts/behaviors/AjaxLoad.js"));
 
             bundles.Add(new StyleBundle("~/Content/css")
                             .Include(
