@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using EventSignIn.DataAccess;
 using EventSignIn.Models;
 
@@ -12,6 +8,13 @@ namespace EventSignIn.Controllers
     {
         CategoryDataAccess _categoryDataAccess = new CategoryDataAccess();
         EventDataAccess _eventDataAccess = new EventDataAccess();
+
+        public ActionResult View(int id)
+        {
+            var currentEvent = _eventDataAccess.GetEventById(id);
+
+            return View(currentEvent);
+        }
 
         //
         // GET: /Event/Create
@@ -24,26 +27,23 @@ namespace EventSignIn.Controllers
 
         //
         // POST: /Event/Create
-
         [HttpPost]
-        public JsonResult Create(EventModel newEvent, int categoryId)
+        public ActionResult Create(EventModel newEvent, int categoryId)
         {
+            newEvent.Category = _categoryDataAccess.GetCategoryById(categoryId);
+
             try
             {
-                newEvent.Category = _categoryDataAccess.GetCategoryById(categoryId);
-                _eventDataAccess.CreateEvent(newEvent);
-
-                return new JsonResult
-                    {
-                        Data = true
-                    };
+                var newId = _eventDataAccess.CreateEvent(newEvent);
+                return RedirectToAction("View", "Event", new { id = newId });
             }
             catch
             {
-                return new JsonResult
-                {
-                    Data = false
-                };
+                ViewBag.Error =
+                    "There was an error creating the event, please review the fields below and correct any mistakes.";
+                var categories = _categoryDataAccess.GetCategories();
+                ViewBag.Categories = categories;
+                return View(newEvent);
             }
         }
 

@@ -7,15 +7,21 @@
     @Styles.Render("~/Content/css")
     <link href="/Content/plugins/bootstrap-datetimepicker.min.css" rel="stylesheet"/>
 </head>
-<body>
-    @RenderBody()
+    <body>
+        @if (!string.IsNullOrWhiteSpace(ViewBag.Error))
+        {
+            <div class="alert alert-error">
+                @ViewBag.Error
+            </div>
+        }
+        @RenderBody()
 
-    @Scripts.Render("~/bundles/jquery")
-    <script src="/Scripts/plugins/bootstrap-datetimepicker.min.js"></script>
-    @Scripts.Render("~/bundles/site")
-    @RenderSection("scripts", required: false)
-    <div id="page_modal" class="modal hide fade" tabindex="-1" role="dialog">
+        @Scripts.Render("~/bundles/jquery")
+        <script src="/Scripts/plugins/bootstrap-datetimepicker.min.js"></script>
+        @Scripts.Render("~/bundles/site")
+        @RenderSection("scripts", required: false)
+        <div id="page_modal" class="modal hide fade" tabindex="-1" role="dialog">
         
-    </div>
-</body>
+        </div>
+    </body>
 </html>

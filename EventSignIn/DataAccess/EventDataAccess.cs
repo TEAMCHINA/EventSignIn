@@ -48,7 +48,7 @@ namespace EventSignIn.DataAccess
             return e;
         }
 
-        public void CreateEvent(EventModel e)
+        public int CreateEvent(EventModel e)
         {
             using (var db = new EventSignInEntities())
             {
@@ -63,6 +63,8 @@ namespace EventSignIn.DataAccess
 
                 db.Events.Add(newEvent);
                 db.SaveChanges();
+
+                return newEvent.Id;
             }
         }
     }

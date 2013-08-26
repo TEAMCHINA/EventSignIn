@@ -33,11 +33,12 @@
                     <select name="categoryId">
                         @foreach (var category in ViewBag.Categories)
                         {
-                            <option value="@category.Id">
+                            <option value="@category.Id" @(Model != null && Model.Category.Id == category.Id ? "selected" : string.Empty)>
                                 @category.Name
                             </option>
                         }
-                    </select>                </div>
+                    </select>
+                </div>
             </div>
             <div class="input">
                 <div class="input-label">

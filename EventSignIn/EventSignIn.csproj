@@ -299,6 +299,8 @@
     <Content Include="Content\less\wells.less" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Views\Event\_CreateForm.cshtml" />
+    <Content Include="Views\Event\View.cshtml" />
+    <Content Include="Views\Event\Create.cshtml" />
     <TypeScriptCompile Include="Scripts\Behaviors\datepicker.ts" />
     <TypeScriptCompile Include="Scripts\Behaviors\loadformmodal.ts" />
     <Content Include="Scripts\Behaviors\datepicker.js">

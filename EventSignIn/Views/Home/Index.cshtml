@@ -18,13 +18,17 @@
     .temp div > div:hover {
         background: #EEEEEE;
     }
+    
+    .temp h4, .temp p {
+        margin: 0;
+    }
 </style>
 
 <div class="temp">
     <div style="float: left">
         <h2>
             Events
-            <button class="btn"
+            <button class="btn btn-primary"
                 data-behavior="loadformmodal"
                 data-formurl="@Url.Action("CreateForm", "Event")">
                 Create
@@ -33,7 +37,9 @@
         @foreach (var e in Model.Events)
         {
             <div>
-                <h3>@e.Name</h3>
+                <a href="@Url.Action("View", "Event", new { id = e.Id })">
+                    <h4>@e.Name</h4>
+                </a>
                 <p>@e.Date.ToShortDateString()</p>
                 <p>@e.Location</p>
             </div>
@@ -45,7 +51,7 @@
         @foreach (var user in Model.Users)
         {
             <div>
-                <h3>@user.FirstName @user.LastName</h3>
+                <h4>@user.FirstName @user.LastName</h4>
                 <p>@user.EmailAddress</p>
                 <p>@user.PhoneNumber</p>
                 <p>Class of @user.GraduationYear</p>
