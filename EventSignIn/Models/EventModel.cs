@@ -10,6 +10,7 @@ namespace EventSignIn.Models
         public string Description { get; set; }
         public DateTime Date { get; set; }
         public string Location { get; set; }
+        public CategoryModel Category { get; set; }
         public IList<UserModel> Attendees { get; set; }
     }
 }

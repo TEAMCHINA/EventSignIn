@@ -4,8 +4,12 @@
 {
 <fieldset>
     <legend>Category</legend>
-    <div>@Html.TextBoxFor(model => model.Name)</div>
-    <div>@Html.TextBoxFor(model => model.Description)</div>
+    <div>
+        <input id="Name" name="Name" type="text" value="@(Model != null ? Model.Name : string.Empty)"/>
+    </div>
+    <div>
+        <input id="Description" name="Description" type="text" value="@(Model != null ? Model.Description : string.Empty)"/>
+    </div>
     
     <input type="submit" value="Create Category"/>
 </fieldset>

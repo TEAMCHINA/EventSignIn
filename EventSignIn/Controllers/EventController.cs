@@ -3,25 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using EventSignIn.DataAccess;
 
 namespace EventSignIn.Controllers
 {
     public class EventController : Controller
     {
+        EventDataAccess _eventDataAccess = new EventDataAccess();
         //
         // GET: /Event/
 
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
-            return View();
-        }
-
-        //
-        // GET: /Event/Details/5
-
-        public ActionResult Details(int id)
-        {
-            return View();
+            var e = _eventDataAccess.GetEventById(id);
+            return View(e);
         }
 
         //

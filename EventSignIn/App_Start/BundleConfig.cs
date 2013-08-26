@@ -10,7 +10,8 @@ namespace EventSignIn
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery")
                             .Include(
-                                "~/Scripts/jquery-{version}.js"));
+                                "~/Scripts/jquery-{version}.js",
+                                "~/Scripts/jquery-ui-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/site")
                             .Include(
@@ -22,6 +23,13 @@ namespace EventSignIn
                                 "~/Content/site.less",
                                 "~/Content/less/bootstrap.less"));
 
+            //bundles.Add(new ScriptBundle("~/bundles/plugins")
+            //                .Include(
+            //                    "~/Scripts/plugins/bootstrap-datetimepicker.min.js"));
+
+            //bundles.Add(new StyleBundle("~/Content/css/plugins")
+            //                .Include(
+            //                    "~/Content/plugins/bootstrap-datetimepicker.min.css"));
         }
     }
 }
