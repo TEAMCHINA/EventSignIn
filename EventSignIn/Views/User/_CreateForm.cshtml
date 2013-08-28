@@ -60,7 +60,11 @@
                     </div>
                 </div>
                 <div>
-                    <input type="checkbox" id="EmailOptIn" name="EmailOptIn" @(Model == null && Model.EmailOptIn ? "checked" : string.Empty)/>
+                    Send emails to this user?
+                    <input type="radio" id="EmailOptInTrue" name="EmailOptIn" value="true" @(Model == null || Model.EmailOptIn ? "checked" : string.Empty)/>
+                    <label for="EmailOptInTrue">Yes</label>
+                    <input type="radio" id="EmailOptInFalse" name="EmailOptIn" value="false" @(Model != null && !Model.EmailOptIn ? "checked" : string.Empty)/>
+                    <label for="EmailOptInFalse">No</label>
                 </div>
             }
 

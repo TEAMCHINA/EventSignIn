@@ -15,8 +15,13 @@ namespace EventSignIn.Controllers
 
         //
         // GET: /Home/
-        public ActionResult Index()
+        public ActionResult Index(bool? admin)
         {
+            if (admin.GetValueOrDefault())
+            {
+                ViewBag.IsAdmin = true;
+            }
+
             var model = new SummaryModel
                 {
                     Users = _userDataAccess.GetUsers(),

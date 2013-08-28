@@ -22,8 +22,13 @@ namespace EventSignIn.Controllers
 
         //
         // GET: /Event/Create
-        public PartialViewResult CreateForm()
+        public PartialViewResult CreateForm(bool? admin)
         {
+            if (admin.GetValueOrDefault())
+            {
+                ViewBag.IsAdmin = true;
+            }
+
             return PartialView("_CreateForm");
         }
 

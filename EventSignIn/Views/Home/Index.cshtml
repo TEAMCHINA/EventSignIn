@@ -25,13 +25,16 @@
 </style>
 
 <div class="temp">
-    <div style="float: left">
+    <div class="pull-left">
         <h2>Events
-            <button class="btn btn-primary"
-                data-behavior="loadformmodal"
-                data-formurl="@Url.Action("CreateForm", "Event")">
-                Create
-            </button>
+            @if (ViewBag.IsAdmin == true)
+            {
+                <button class="btn btn-primary"
+                        data-behavior="loadformmodal"
+                        data-formurl="@Url.Action("CreateForm", "Event")">
+                    Create
+                </button>
+            }
         </h2>
         @foreach (var e in Model.Events)
         {
@@ -44,25 +47,28 @@
             </div>
         }
     </div>
-
-    <div style="float: right">
-        <h2>Users
-            <button class="btn btn-primary"
-                data-behavior="loadformmodal"
-                data-formurl="@Url.Action("CreateForm", "User")">
-                Create
-            </button>
-        </h2>
-        @foreach (var user in Model.Users)
-        {
-            <div>
-                <a href="@Url.Action("View", "User", new { id = user.Id, admin = true})">
-                    <h4>@user.FirstName @user.LastName</h4>
-                </a>
-                <p>@user.EmailAddress</p>
-                <p>@user.PhoneNumber</p>
-                <p>Class of @user.GraduationYear</p>
-            </div>
-        }
-    </div>
+    
+    @if (ViewBag.IsAdmin == true)
+    {
+        <div class="pull-left">
+            <h2>Users
+                <button class="btn btn-primary"
+                        data-behavior="loadformmodal"
+                        data-formurl="@Url.Action("CreateForm", "User", new {admin = true})">
+                    Create
+                </button>
+            </h2>
+            @foreach (var user in Model.Users)
+            {
+                <div>
+                    <a href="@Url.Action("View", "User", new {id = user.Id, admin = true})">
+                        <h4>@user.FirstName @user.LastName</h4>
+                    </a>
+                    <p>@user.EmailAddress</p>
+                    <p>@user.PhoneNumber</p>
+                    <p>Class of @user.GraduationYear</p>
+                </div>
+            }
+        </div>
+    }
 </div>

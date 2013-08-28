@@ -32,3 +32,13 @@ fieldset.form legend div.input-container {
   display: table-cell;
   vertical-align: top;
 }
+fieldset.form input,
+fieldset.form textarea {
+  margin-left: 5px;
+  margin-top: 0;
+}
+fieldset.form label {
+  display: inline-block;
+  margin: 0;
+  vertical-align: center;
+}
