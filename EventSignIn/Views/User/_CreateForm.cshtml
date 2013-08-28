@@ -1,0 +1,74 @@
+﻿@model EventSignIn.Models.UserModel
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">x</button>
+    <h3>New User</h3>
+</div>
+
+@using (Html.BeginForm("Create", "User"))
+{
+    <div class="modal-body">
+        <fieldset class="form">
+            <div class="input">
+                <div class="input-label">
+                    First Name:
+                </div>
+                <div class="input-container">
+                    <input id="FirstName" name="FirstName" type="text" value="@(Model != null ? Model.FirstName : string.Empty)"/>
+                </div>
+            </div>
+            <div class="input">
+                <div class="input-label">
+                    Last Name:
+                </div>
+                <div class="input-container">
+                    <input id="LastName" name="LastName" type="text" value="@(Model != null ? Model.LastName : string.Empty)"/>
+                </div>
+            </div>
+            <div class="input">
+                <div class="input-label">
+                    Email Address:
+                </div>
+                <div class="input-container">
+                    <input id="EmailAddress" name="EmailAddress" type="text" value="@(Model != null ? Model.EmailAddress : string.Empty)"/>
+                </div>
+            </div>
+            <div class="input">
+                <div class="input-label">
+                    Phone Number:
+                </div>
+                <div class="input-container">
+                    <input id="PhoneNumber" name="PhoneNumber" type="text" value="@(Model != null ? Model.PhoneNumber : string.Empty)"/>
+                </div>
+            </div>
+            <div class="input">
+                <div class="input-label">
+                    Graduation Year:
+                </div>
+                <div class="input-container">
+                    <input id="GraduationYear" name="GraduationYear" type="text" value="@(Model != null ? Model.GraduationYear : null)"/>
+                </div>
+            </div>
+            @if (ViewBag.IsAdmin == true)
+            {
+                <div class="input">
+                    <div class="input-label">
+                        Notes:
+                    </div>
+                    <div class="input-container">
+                        <textarea id="Notes" name="Notes" type="text" value="@(Model != null ? Model.Notes : null)" cols="50" rows="5"/>
+                    </div>
+                </div>
+                <div>
+                    <input type="checkbox" id="EmailOptIn" name="EmailOptIn" @(Model == null && Model.EmailOptIn ? "checked" : string.Empty)/>
+                </div>
+            }
+
+        </fieldset>
+    </div>
+    
+    <div class="modal-footer">
+        <button type="button" class="btn" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary" value="Create Event">Save</button>
+    </div>
+}

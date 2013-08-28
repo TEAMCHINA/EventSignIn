@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using EventSignIn.Models;
 
 namespace EventSignIn.DataAccess
@@ -29,16 +28,20 @@ namespace EventSignIn.DataAccess
             return GetCategories().FirstOrDefault(category => category.Id == id);
         }
 
-        public void AddCategory(CategoryModel category)
+        public int AddCategory(CategoryModel category)
         {
             using (var db = new EventSignInEntities())
             {
-                db.Categories.Add(new Category
+                var newCategory = new Category
                     {
                         Name = category.Name,
                         Description = category.Description
-                    });
+                    };
+
+                db.Categories.Add(newCategory);
                 db.SaveChanges();
+
+                return newCategory.Id;
             }
         }
 

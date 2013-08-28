@@ -11,14 +11,14 @@
         margin-bottom: 5px;
     }
 
-    .temp div > div {
-        cursor: pointer;
-    }
+        .temp div > div {
+            cursor: pointer;
+        }
 
-    .temp div > div:hover {
-        background: #EEEEEE;
-    }
-    
+            .temp div > div:hover {
+                background: #EEEEEE;
+            }
+
     .temp h4, .temp p {
         margin: 0;
     }
@@ -26,8 +26,7 @@
 
 <div class="temp">
     <div style="float: left">
-        <h2>
-            Events
+        <h2>Events
             <button class="btn btn-primary"
                 data-behavior="loadformmodal"
                 data-formurl="@Url.Action("CreateForm", "Event")">
@@ -47,11 +46,19 @@
     </div>
 
     <div style="float: right">
-        <h2>Users</h2>
+        <h2>Users
+            <button class="btn btn-primary"
+                data-behavior="loadformmodal"
+                data-formurl="@Url.Action("CreateForm", "User")">
+                Create
+            </button>
+        </h2>
         @foreach (var user in Model.Users)
         {
             <div>
-                <h4>@user.FirstName @user.LastName</h4>
+                <a href="@Url.Action("View", "User", new { id = user.Id, admin = true})">
+                    <h4>@user.FirstName @user.LastName</h4>
+                </a>
                 <p>@user.EmailAddress</p>
                 <p>@user.PhoneNumber</p>
                 <p>Class of @user.GraduationYear</p>

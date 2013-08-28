@@ -129,11 +129,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DataAccess\Category.cs">
       <DependentUpon>EventSignInModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataAccess\UserDataAccess.cs" />
     <Compile Include="DataAccess\Event.cs">
       <DependentUpon>EventSignInModel.tt</DependentUpon>
     </Compile>
@@ -184,6 +186,12 @@
       <DependentUpon>bootstrap.less</DependentUpon>
     </Content>
     <Content Include="Content\plugins\bootstrap-datetimepicker.min.css" />
+    <Content Include="Content\Site.css">
+      <DependentUpon>Site.less</DependentUpon>
+    </Content>
+    <Content Include="Content\Site.min.css">
+      <DependentUpon>Site.less</DependentUpon>
+    </Content>
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -301,6 +309,9 @@
     <Content Include="Views\Event\_CreateForm.cshtml" />
     <Content Include="Views\Event\View.cshtml" />
     <Content Include="Views\Event\Create.cshtml" />
+    <Content Include="Views\User\_CreateForm.cshtml" />
+    <Content Include="Views\User\Create.cshtml" />
+    <Content Include="Views\User\View.cshtml" />
     <TypeScriptCompile Include="Scripts\Behaviors\datepicker.ts" />
     <TypeScriptCompile Include="Scripts\Behaviors\loadformmodal.ts" />
     <Content Include="Scripts\Behaviors\datepicker.js">

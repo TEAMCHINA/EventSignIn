@@ -1,0 +1,12 @@
+﻿@model EventSignIn.Models.UserModel
+
+<h2>@Model.FirstName @Model.LastName</h2>
+<div>@Model.EmailAddress</div>
+<div>@Model.PhoneNumber</div>
+<div>Class of @Model.GraduationYear</div>
+@if (ViewBag.IsAdmin == true)
+{
+    <div>Email this user? @(Model.EmailOptIn ? "Yes" : "No")</div>
+    <div>Notes</div>
+    <div>@Model.Notes</div>
+}

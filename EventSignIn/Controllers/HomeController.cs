@@ -11,6 +11,7 @@ namespace EventSignIn.Controllers
     public class HomeController : Controller
     {
         EventDataAccess _eventDataAccess = new EventDataAccess();
+        UserDataAccess _userDataAccess = new UserDataAccess();
 
         //
         // GET: /Home/
@@ -18,26 +19,7 @@ namespace EventSignIn.Controllers
         {
             var model = new SummaryModel
                 {
-                    Users = new List<UserModel>
-                        {
-                            new UserModel
-                                {
-                                    FirstName = "Lisa",
-                                    LastName = "Ly",
-                                    EmailAddress = "ladyautodidact@gmail.com",
-                                    EmailOptIn = true,
-                                    GraduationYear = 2003,
-                                },
-                            new UserModel
-                                {
-                                    FirstName = "Cliff",
-                                    LastName = "Chinn",
-                                    EmailAddress = "monkeyhateclean@gmail.com",
-                                    EmailOptIn = true,
-                                    GraduationYear = 2002,
-                                    Notes = "Graduated from UW!",
-                                },
-                        },
+                    Users = _userDataAccess.GetUsers(),
                         Events = _eventDataAccess.GetEvents(),
                 };
             return View(model);
