@@ -9,8 +9,11 @@
             formUrl = $this.attr("data-formurl");
 
         $this.click(function () {
+            var data = JSON.parse($this.attr("data-formdata"));
+
             $.ajax({
                 url: formUrl,
+                data: data,
                 type: 'POST',
                 success: onLoad,
                 error: onError

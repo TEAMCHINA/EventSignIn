@@ -17,6 +17,7 @@ namespace EventSignIn
                                 "~/Scripts/behaviors.js",
                                 "~/Scripts/bootstrap.js",
                                 "~/Scripts/behaviors/datepicker.js",
+                                "~/Scripts/behaviors/eventsignin.js",
                                 "~/Scripts/behaviors/loadformmodal.js"));
 
             bundles.Add(new StyleBundle("~/Content/css")

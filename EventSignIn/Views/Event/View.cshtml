@@ -1,6 +1,44 @@
 ﻿@model EventSignIn.Models.EventModel
 
-<h2>@Model.Name (@Model.Category.Name)</h2>
-<div>@Model.Date.ToString()</div>
-<div>@Model.Location</div>
-<div>@Model.Description</div>
+<div style="margin: 5px;"
+     data-behavior="eventsignin"
+     data-lookupuser-url="@Url.Action("LookupUser", "User")"
+     data-signin-url="@Url.Action("RegisterUser", "Event", new { eventId = 1, userId = 1})">
+    <h2>@Model.Name (@Model.Category.Name)</h2>
+    <div class="pull-left" style="margin-right: 10px; border: 1px solid black">
+        <h4>Attendees</h4>
+        @foreach (var attendee in Model.Attendees)
+        {
+            <div style="border: 1px solid black; border-radius: 5px; margin: 3px; padding: 3px;">
+                <div>@attendee.FirstName @attendee.LastName</div>
+                <div>Class of @attendee.GraduationYear</div>
+            </div>
+        }
+    </div>
+    <div class="pull-left">
+        <div>@Model.Date.ToString()</div>
+        <div>@Model.Location</div>
+        <div>@Model.Description</div>
+        <button class="btn btn-primary signin">Sign In!</button>
+    </div>
+    <div id="userlookup" class="modal hide fade" role="dialog">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">x</button>
+            <h3>Sign In</h3>
+        </div>
+        <div class="modal-body">
+            <div id="register_error" class="alert alert-error" style="display: none;">
+                Could not find you; would you like to
+                <a href="#"
+                   data-behavior="loadformmodal"
+                   data-formurl="@Url.Action("CreateForm", "User")">register</a>?
+            </div>
+            Email Address:
+            <input type="text" id="lookupEmail" />
+        </div>
+        <div class="modal-footer">
+            <button class="btn" data-dismiss="modal">Cancel</button>
+            <button class="btn btn-primary lookupuser">Sign In</button>
+        </div>
+    </div>
+</div>

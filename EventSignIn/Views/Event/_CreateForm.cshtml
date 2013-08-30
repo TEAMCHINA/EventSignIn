@@ -33,7 +33,9 @@
                     <select name="categoryId">
                         @foreach (var category in ViewBag.Categories)
                         {
-                            <option value="@category.Id" @(Model != null && Model.Category.Id == category.Id ? "selected" : string.Empty)>
+                            <option
+                                data-toggle="tooltip" title="@category.Description"
+                                value="@category.Id" @(Model != null && Model.Category.Id == category.Id ? "selected" : string.Empty)>
                                 @category.Name
                             </option>
                         }

@@ -306,6 +306,13 @@
     <Content Include="Content\less\variables.less" />
     <Content Include="Content\less\wells.less" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <TypeScriptCompile Include="Scripts\Behaviors\eventsignin.ts" />
+    <Content Include="Scripts\Behaviors\eventsignin.js">
+      <DependentUpon>eventsignin.ts</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Behaviors\eventsignin.min.js">
+      <DependentUpon>eventsignin.ts</DependentUpon>
+    </Content>
     <Content Include="Views\Event\_CreateForm.cshtml" />
     <Content Include="Views\Event\View.cshtml" />
     <Content Include="Views\Event\Create.cshtml" />

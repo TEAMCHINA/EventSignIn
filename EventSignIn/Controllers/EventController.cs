@@ -47,9 +47,17 @@ namespace EventSignIn.Controllers
             }
         }
 
+        [HttpPost]
+        public JsonResult RegisterUser(int eventId, int userId)
+        {
+            return new JsonResult
+            {
+                Data = _eventDataAccess.RegisterUserForEvent(eventId, userId)
+            };
+        }
+
         //
         // GET: /Event/Edit/5
-
         public ActionResult Edit(int id)
         {
             return View();

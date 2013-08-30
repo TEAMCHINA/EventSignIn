@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using EventSignIn.Models;
 
@@ -29,7 +30,14 @@ namespace EventSignIn.DataAccess
 
         public UserModel GetUserById(int id)
         {
-            return GetUsers().FirstOrDefault(user => user.Id == id);
+            return GetUsers()
+                .FirstOrDefault(user => user.Id == id);
+        }
+
+        public UserModel GetUserByEmail(string emailAddress)
+        {
+            return GetUsers()
+                .FirstOrDefault(user => string.Equals(emailAddress, user.EmailAddress, StringComparison.OrdinalIgnoreCase));
         }
 
         public int CreateUser(UserModel user)

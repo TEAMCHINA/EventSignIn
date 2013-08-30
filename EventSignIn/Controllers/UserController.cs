@@ -22,14 +22,14 @@ namespace EventSignIn.Controllers
 
         //
         // GET: /Event/Create
-        public PartialViewResult CreateForm(bool? admin)
+        public PartialViewResult CreateForm(string emailAddress, bool? admin)
         {
             if (admin.GetValueOrDefault())
             {
                 ViewBag.IsAdmin = true;
             }
 
-            return PartialView("_CreateForm");
+            return PartialView("_CreateForm", new UserModel { EmailAddress = emailAddress });
         }
 
         //
@@ -50,30 +50,13 @@ namespace EventSignIn.Controllers
             }
         }
 
-        //
-        // GET: /Event/Delete/5
-
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        //
-        // POST: /Event/Delete/5
-
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public JsonResult LookupUser(string emailAddress)
         {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return new JsonResult
+                {
+                    Data = _userDataAccess.GetUserByEmail(emailAddress),
+                };
         }
     }
 }
