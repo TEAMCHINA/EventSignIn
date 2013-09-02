@@ -7,6 +7,7 @@ namespace EventSignIn.Controllers
     public class UserController : Controller
     {
         UserDataAccess _userDataAccess = new UserDataAccess();
+        EventDataAccess _eventDataAccess = new EventDataAccess();
 
         public ActionResult View(int id, bool? admin)
         {
@@ -16,8 +17,15 @@ namespace EventSignIn.Controllers
             }
 
             var user = _userDataAccess.GetUserById(id);
+            var events = _eventDataAccess.GetEventsForUser(user.Id);
 
-            return View(user);
+            var model = new UserDetailsModel
+                {
+                    User = user,
+                    Events = events,
+                };
+
+            return View(model);
         }
 
         //

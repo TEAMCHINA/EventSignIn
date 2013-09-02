@@ -1,12 +1,27 @@
-﻿@model EventSignIn.Models.UserModel
+﻿@model EventSignIn.Models.UserDetailsModel
 
-<h2>@Model.FirstName @Model.LastName</h2>
-<div>@Model.EmailAddress</div>
-<div>@Model.PhoneNumber</div>
-<div>Class of @Model.GraduationYear</div>
-@if (ViewBag.IsAdmin == true)
-{
-    <div>Email this user? @(Model.EmailOptIn ? "Yes" : "No")</div>
-    <div>Notes</div>
-    <div>@Model.Notes</div>
-}
+<h2>@Model.User.FirstName @Model.User.LastName</h2>
+
+<div class="pull-left">
+    <div>@Model.User.EmailAddress</div>
+    <div>@Model.User.PhoneNumber</div>
+    <div>Class of @Model.User.GraduationYear</div>
+    @if (ViewBag.IsAdmin == true)
+    {
+        <div>Email this user? @(Model.User.EmailOptIn ? "Yes" : "No")</div>
+        <div>Notes</div>
+        <div>@Model.User.Notes</div>
+    }
+</div>
+<div class="pull-left" style="border: 1px solid black;">
+    @foreach (var e in Model.Events)
+    {
+        <div>
+            <a href="@Url.Action("View", "Event", new { id = e.Id })">
+                <h4>@e.Name</h4>
+            </a>
+            <div>@e.Date.ToShortDateString()</div>
+            <div>@e.Location</div>
+        </div>
+    }
+</div>

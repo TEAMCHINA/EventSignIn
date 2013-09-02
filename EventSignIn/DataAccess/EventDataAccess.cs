@@ -51,6 +51,35 @@ namespace EventSignIn.DataAccess
             return e;
         }
 
+        public IList<EventModel> GetEventsForUser(int userId)
+        {
+            using (var db = new EventSignInEntities())
+            {
+                var categories = _categoryDataAccess.GetCategories()
+                                                    .ToDictionary(c => c.Id, c => c);
+
+                var users = _userDataAccess.GetUsers()
+                                           .ToDictionary(u => u.Id, u => u);
+                var events = db.Events
+                               .Where(e => e.EventAttendances.Any(ea => ea.UserId == userId))
+                               .ToList();
+
+                return events.Select(e => new EventModel
+                      {
+                          Id = e.Id,
+                          Name = e.Name,
+                          Description = e.Description,
+                          Location = e.Location,
+                          Date = e.Date,
+                          Category = categories[e.Category],
+                          Attendees = e.EventAttendances.Select(user => users[user.UserId])
+                              .ToList(),
+                      })
+                  .ToList();
+
+            }
+        }
+
         public int CreateEvent(EventModel e)
         {
             using (var db = new EventSignInEntities())
